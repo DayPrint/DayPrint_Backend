@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 @Slf4j
 @Service
@@ -26,11 +27,31 @@ public class PostInfoService {
     @Autowired
     private PostInfoRepository postInfoRepository;
 
+    public PostInfo findPost(Long id){
+        return postInfoRepository.findById(id).orElse(new PostInfo());
+    }
+
     public PostInfo createUserPost(Long id, PostInfo postInfo){
         User user = userService.findUser(id);
         user.addPost(postInfo);
         return postInfoRepository.save(postInfo);
     }
 
+    public PostInfo updateUserPost(Long id, PostInfo postInfo, Long postId){
+        User user = userService.findUser(id);
+        PostInfo original = findPost(postId);
+        user.removePost(original);
+        user.addPost(postInfo);
+        original.setTitle(postInfo.getTitle());
+        original.setPostContent(postInfo.getPostContent());
+        return original;
+    }
 
+    public ResponseEntity<?> deleteUserPost(Long id, Long postId){
+        User user = userService.findUser(id);
+        PostInfo post = findPost(postId);
+        user.removePost(post);
+        postInfoRepository.delete(post);
+        return ResponseEntity.ok().build();
+    }
 }

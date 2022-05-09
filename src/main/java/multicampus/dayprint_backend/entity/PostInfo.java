@@ -16,7 +16,7 @@ public class PostInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @ManyToOne
     private User user;
