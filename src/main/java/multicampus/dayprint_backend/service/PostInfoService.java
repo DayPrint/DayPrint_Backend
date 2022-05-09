@@ -27,8 +27,8 @@ public class PostInfoService {
     private PostInfoRepository postInfoRepository;
 
     public PostInfo createUserPost(Long id, PostInfo postInfo){
-        User user = userService.findUser(id);
-        user.addPost(postInfo);
+//        User user = userService.findUser(id);
+//        user.addPost(postInfo);
         return postInfoRepository.save(postInfo);
     }
 
