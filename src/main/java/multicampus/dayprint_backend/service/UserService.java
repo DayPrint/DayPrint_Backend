@@ -2,22 +2,22 @@ package multicampus.dayprint_backend.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import multicampus.dayprint_backend.dto.post.PostRes;
 import multicampus.dayprint_backend.dto.user.JoinRes;
 import multicampus.dayprint_backend.dto.user.LoginRes;
 import multicampus.dayprint_backend.dto.user.UserReq;
+import multicampus.dayprint_backend.entity.PostInfo;
 import multicampus.dayprint_backend.entity.User;
 import multicampus.dayprint_backend.exeception.BaseException;
 import multicampus.dayprint_backend.exeception.BaseResponseCode;
 import multicampus.dayprint_backend.repository.UserRepository;
-import multicampus.dayprint_backend.repository.PostInfoRepository;
 import multicampus.dayprint_backend.utils.JwtTokenProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -60,6 +60,7 @@ public class UserService {
         return new LoginRes(user.getId(), token);
     }
 
+    // email 활용 유저조회
     public User findUser(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new BaseException(BaseResponseCode.FAILED_TO_FIND_USER));
@@ -67,5 +68,22 @@ public class UserService {
         return user;
     }
 
+    //id 활용 유저조회
+    public User findUserById(Long id){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new BaseException(BaseResponseCode.FAILED_TO_FIND_USER));
+
+        return user;
+    }
+
+    //userPost 리스트 조회
+    public List<PostRes> findPosts(Long id){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new BaseException(BaseResponseCode.FAILED_TO_FIND_POST));
+
+        List<PostRes> list = new ArrayList<>();
+        user.getPostInfos().forEach( o -> list.add(new PostRes(o)));
+        return list;
+    }
 
 }

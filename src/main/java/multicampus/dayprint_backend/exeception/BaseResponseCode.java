@@ -37,6 +37,13 @@ public enum BaseResponseCode {
     NON_EXISTENT_EMAIL(HttpStatus.BAD_REQUEST, "존재하지 않는 이메일입니다."),
     WRONG_PWD(HttpStatus.BAD_REQUEST, "잘못된 비밀번호입니다."),
 
+
+    FAILED_TO_FIND_POST(HttpStatus.NOT_FOUND, "게시글 조회에 실패했습니다."),
+    FAILED_TO_SAVE_POST(HttpStatus.NOT_FOUND, "게시글 저장에 실패했습니다." ),
+
+    FAILED_TO_FIND_COMMENT(HttpStatus.NOT_FOUND, "댓글 조회에 실패했습니다."),
+    FAILED_TO_SAVE_COMMENT(HttpStatus.NOT_FOUND, "댓글 저장에 실패했습니다."),
+
     ;
 
     private final HttpStatus status;
