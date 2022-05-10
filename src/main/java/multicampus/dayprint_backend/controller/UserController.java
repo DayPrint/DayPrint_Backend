@@ -1,5 +1,9 @@
 package multicampus.dayprint_backend.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import multicampus.dayprint_backend.dto.user.JoinRes;
 import multicampus.dayprint_backend.dto.user.LoginRes;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = {"회원 가입 및 로그인 정보를 제공하는 Controller"})
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -21,6 +26,7 @@ public class UserController {
     private final UserService userService;
 
     // 회원가입
+    @ApiOperation(value = "회원가입을 진행하는 메소드")
     @PostMapping("/join")
     public BaseResponse<JoinRes> join(@RequestBody UserReq userReq) {
 
@@ -35,6 +41,7 @@ public class UserController {
     }
 
     // 로그인
+    @ApiOperation(value = "로그인을 진행하는 메소드")
     @PostMapping("/login")
     public BaseResponse<LoginRes> login(@RequestBody UserLoginReq userLoginReq) {
 

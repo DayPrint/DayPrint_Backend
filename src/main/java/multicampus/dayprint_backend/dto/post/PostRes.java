@@ -1,5 +1,6 @@
 package multicampus.dayprint_backend.dto.post;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import multicampus.dayprint_backend.entity.PostInfo;
 
 import java.time.LocalDate;
 
+@ApiModel(value = "게시글 응답 정보")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
