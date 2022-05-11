@@ -45,6 +45,8 @@ public class PostInfoService {
                      .title(postReq.getTitle())
                      .postContent(postReq.getPostContent())
                      .targetDate(date)
+                     .imageUrl(postReq.getImageUrl())
+                     .theme(postReq.getTheme())
                      .user(user)
                      .build());
         } catch (Exception e){
@@ -63,6 +65,8 @@ public class PostInfoService {
         originalPost.setTitle(postReq.getTitle());
         originalPost.setPostContent(postReq.getPostContent());
         originalPost.setTargetDate(date);
+        originalPost.setImageUrl(postReq.getImageUrl());
+        originalPost.setTheme(postReq.getTheme());
         user.addPost(originalPost);
 
         return new PostRes(originalPost);

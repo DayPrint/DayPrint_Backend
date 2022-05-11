@@ -20,6 +20,10 @@ public class PostRes {
 
     private String content;
 
+    private String imageUrl;
+
+    private String theme;
+
     private LocalDate targetDate;
 
     public PostRes(PostInfo postInfo){
@@ -27,5 +31,7 @@ public class PostRes {
         title=postInfo.getTitle();
         content=postInfo.getPostContent();
         targetDate=postInfo.getTargetDate();
+        imageUrl=postInfo.getImageUrl();
+        theme=postInfo.getTheme();
     }
 }

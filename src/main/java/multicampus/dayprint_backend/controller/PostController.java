@@ -15,7 +15,7 @@ import java.util.List;
 @Api(tags = {"게시글에 대한 CRUD를 제공하는 Controller"})
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/post")
+@RequestMapping("/api/post")
 public class PostController {
 
     private final UserService userService;

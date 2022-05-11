@@ -13,7 +13,7 @@ import java.util.List;
 @Api(tags = {"댓글 생성과 조회를 제공하는 Controller"})
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/comment")
+@RequestMapping("/api/comment")
 public class CommentController {
 
     private final CommentInfoService commentInfoService;
