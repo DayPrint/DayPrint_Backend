@@ -1,11 +1,16 @@
 package multicampus.dayprint_backend.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Data
+@Builder
 public class CommentInfo {
 
     @Id
@@ -15,7 +20,9 @@ public class CommentInfo {
     @ManyToOne
     private PostInfo postInfo;
 
+    @Column
     private String author;
 
+    @Column
     private String text;
 }

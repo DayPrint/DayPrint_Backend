@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    #mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://dayprint-db.ctwt21oocana.ca-central-1.rds.amazonaws.com:3306/dayprint_db
+    username: admin
+    password: admin123
+  #JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

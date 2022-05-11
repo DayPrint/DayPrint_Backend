@@ -1,25 +1,37 @@
 package multicampus.dayprint_backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @Data
 @Entity
-public class User {
+@Builder
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    @Column
+    private Long id;
 
+    @Column
     private String name;
+
+    @Column
+    private String phone;
 
     @Column(unique = true)
     private String email;
 
+    @Column
     private String password;
 
     @Column(name = "image_url")
@@ -36,5 +48,35 @@ public class User {
     }
     public void removePost(PostInfo postInfo){
         postInfos.remove(postInfo);
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
