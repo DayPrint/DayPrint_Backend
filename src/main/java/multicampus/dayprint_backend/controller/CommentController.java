@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Api(tags = {"댓글 생성과 조회를 제공하는 Controller"})
+@CrossOrigin(value = "*", allowedHeaders = "*", exposedHeaders = "Authorization")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/comment")

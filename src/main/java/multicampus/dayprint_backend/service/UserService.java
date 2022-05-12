@@ -60,6 +60,8 @@ public class UserService {
         return new LoginRes(user.getId(), token);
     }
 
+
+
     // email 활용 유저조회
     public User findUser(String email) {
         User user = userRepository.findByEmail(email)

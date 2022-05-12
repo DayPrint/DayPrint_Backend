@@ -13,12 +13,18 @@ import multicampus.dayprint_backend.entity.User;
 import multicampus.dayprint_backend.exeception.BaseResponse;
 import multicampus.dayprint_backend.exeception.BaseResponseCode;
 import multicampus.dayprint_backend.service.UserService;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags = {"회원 가입 및 로그인 정보를 제공하는 Controller"})
+@CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -60,5 +66,9 @@ public class UserController {
         return new BaseResponse<>(loginRes);
     }
 
-
+//    @ApiOperation(value = "로그아웃을 진행하는 메소드")
+//    @PostMapping("/logout")
+//    public BaseResponse logout(){
+//        return new BaseResponse(new );
+//    }
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Api(tags = {"게시글에 대한 CRUD를 제공하는 Controller"})
+@CrossOrigin(value = "*", allowedHeaders = "*",exposedHeaders = "Authorization")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/post")
