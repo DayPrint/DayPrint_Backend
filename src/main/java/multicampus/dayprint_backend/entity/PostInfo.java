@@ -31,6 +31,12 @@ public class PostInfo {
     private String postContent;
 
     @Column
+    private String imageUrl;
+
+    @Column
+    private String theme;
+
+    @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate targetDate;

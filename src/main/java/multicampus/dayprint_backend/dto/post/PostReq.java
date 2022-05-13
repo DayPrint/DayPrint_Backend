@@ -20,6 +20,10 @@ public class PostReq {
 
     private String postContent;
 
+    private String imageUrl;
+
+    private String theme;
+
     @ApiModelProperty(value = "기념일 날짜", example = "꼭 yyyy-mm-dd 형식으로 입력해주세요", required = true)
     private String targetDate;
 }

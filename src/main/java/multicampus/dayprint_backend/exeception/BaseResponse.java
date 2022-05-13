@@ -2,6 +2,7 @@ package multicampus.dayprint_backend.exeception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
+import org.springframework.http.HttpHeaders;
 
 import static multicampus.dayprint_backend.exeception.BaseResponseCode.OK;
 
