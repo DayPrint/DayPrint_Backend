@@ -56,9 +56,9 @@ public class PostInfoService {
     }
 
     @Transactional
-    public PostRes updateUserPost(Long id, Long postId, PostReq postReq) {
-        User user = userService.findUserById(id);
+    public PostRes updateUserPost(Long postId, PostReq postReq) {
         PostInfo originalPost = findPost(postId);
+        User user = userService.findUserById(originalPost.getUser().getId());
         LocalDate date = LocalDate.parse(postReq.getTargetDate());
 
         user.removePost(originalPost);
@@ -77,6 +77,11 @@ public class PostInfoService {
         User user = post.getUser();
         user.removePost(post);
         postInfoRepository.delete(post);
+        return new PostRes(post);
+    }
+
+    public PostRes getUserPostDetail(Long postId){
+        PostInfo post = findPost(postId);
         return new PostRes(post);
     }
 }

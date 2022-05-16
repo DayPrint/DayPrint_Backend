@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(tags = {"게시글에 대한 CRUD를 제공하는 Controller"})
+@Api(tags = {"게시글에 대한 CR을 제공하는 Controller"})
 //@CrossOrigin(origins="*", value = "*", allowedHeaders = "*",exposedHeaders = "*")
 @CrossOrigin("*")
 @RestController
@@ -33,17 +33,5 @@ public class PostController {
     @PostMapping("/{id}")
     public PostRes createPost(@PathVariable Long id, @RequestBody PostReq postReq){
         return postInfoService.createUserPost(id, postReq);
-    }
-
-    @ApiOperation(value = "유저 id와 게시글 id 그리고 변경된 값을 통해 수정하는 메소드")
-    @PutMapping("/{id}/{postId}")
-    public PostRes updatePost(@PathVariable Long id, @PathVariable Long postId, @RequestBody PostReq postReq){
-        return postInfoService.updateUserPost(id, postId, postReq);
-    }
-
-    @ApiOperation(value = "게시글 id를 통해서 삭제하는 메소드")
-    @DeleteMapping("/{postId}")
-    public PostRes deletePost(@PathVariable Long postId){
-        return postInfoService.deleteUserPost(postId);
     }
 }
