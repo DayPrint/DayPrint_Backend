@@ -10,6 +10,6 @@ import lombok.Getter;
 public class LoginRes {
 
     private Long id;
-
+    private String username;
     private String jwtToken;
 }
