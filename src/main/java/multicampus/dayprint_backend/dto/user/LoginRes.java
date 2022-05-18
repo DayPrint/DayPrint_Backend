@@ -12,4 +12,6 @@ public class LoginRes {
     private Long id;
 
     private String jwtToken;
+
+    private String username;
 }
