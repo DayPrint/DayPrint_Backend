@@ -32,6 +32,7 @@ public class PostController {
     @ApiOperation(value = "게시글을 유저id에 맞게 저장하는 기능의 메소드")
     @PostMapping("/{id}")
     public PostRes createPost(@PathVariable Long id, @RequestBody PostReq postReq){
+        System.out.println(postReq.toString());
         return postInfoService.createUserPost(id, postReq);
     }
 }

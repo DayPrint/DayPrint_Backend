@@ -10,6 +10,7 @@ import multicampus.dayprint_backend.service.PostInfoService;
 import org.springframework.web.bind.annotation.*;
 
 @Api(tags = {"게시글 디테일에 대한 RUD를 제공하는 메소드"})
+@CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/postdetail")

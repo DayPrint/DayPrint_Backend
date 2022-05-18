@@ -57,7 +57,7 @@ public class UserService {
         User user = findUser(email);
         String token = jwtTokenProvider.createToken(email);
 
-        return new LoginRes(user.getId(), token);
+        return new LoginRes(user.getId(), token, user.getName());
     }
 
 

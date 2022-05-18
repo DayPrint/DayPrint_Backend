@@ -2,7 +2,7 @@ spring:
   datasource:
     #mysql
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://dayprint-db.ctwt21oocana.ca-central-1.rds.amazonaws.com:3306/dayprint_db
+    url: jdbc:mysql://dayprint-db.ctwt21oocana.ca-central-1.rds.amazonaws.com:3306/dayprint_db?useUnicode=true&characterEncoding=utf8
     username: admin
     password: admin123
   #JPA
@@ -13,3 +13,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  sql:
+    init:
+      encoding: UTF-8
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
